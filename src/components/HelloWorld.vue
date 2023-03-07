@@ -1,6 +1,12 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 @click="onClick">{{ msg }}</h1>
+    <div v-for="category in categoryList" v-bind:key="category.id">
+      {{ category.name }}
+      <li v-for="(sub, index) in category.subCategories" v-bind:key="index">
+        {{ sub.name }}
+      </li>
+    </div>
   </div>
 </template>
 
@@ -9,6 +15,31 @@ export default {
   name: "HelloWorld",
   props: {
     msg: String,
+  },
+  methods: {
+    onClick(e) {
+      console.log(e);
+      dispatchEvent(new KeyboardEvent("keydown", { key: "Shift" }));
+    },
+  },
+
+  setup() {
+    const categoryList = [
+      {
+        id: 1,
+        name: "여성의류",
+        subCategories: [
+          { name: "아우터" },
+          {
+            name: "티탑",
+          },
+        ],
+      },
+    ];
+
+    return {
+      categoryList,
+    };
   },
 };
 </script>
