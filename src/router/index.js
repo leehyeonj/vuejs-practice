@@ -1,7 +1,7 @@
 // 라우터 인스턴스 생성
 
-import TodoList from "../components/TodoList.vue";
-import HelloWorld from "../components/HelloWorld.vue";
+import TodoPage from "../views/TodoPage.vue";
+import HelloWorld from "../views/HelloWorld.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -9,7 +9,7 @@ export const router = new VueRouter({
   mode: "history",
   routes: [
     { path: "/", component: HelloWorld },
-    { path: "/todo", component: TodoList },
+    { path: "/todo", component: TodoPage },
   ],
 });
 Vue.use(VueRouter);
