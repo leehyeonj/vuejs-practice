@@ -19,7 +19,10 @@ export default {
   },
   methods : {
     addTodo (){
-      store.commit('addTodo', this.newTodoItem)
+      store.commit('addTodo', {
+        id : Math.random(),
+        title : this.newTodoItem
+      })
       this.newTodoItem = ""
     }
   }
