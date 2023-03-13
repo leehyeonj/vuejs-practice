@@ -1,23 +1,13 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-   <TodoInput/>
-   <todo-list></todo-list>
+    <router-link to="/todo">todolist</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import TodoInput from "@/components/TodoInput.vue";
-import TodoList from "@/components/TodoList.vue";
-
 export default {
   name: "App",
-  components: {
-    TodoList,
-    TodoInput,
-
-  },
-
 };
 </script>
 
