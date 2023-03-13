@@ -1,6 +1,13 @@
 <template>
   <div>
-    <router-link to="/">Home</router-link>
+    <div>
+      <router-link to="/">Home</router-link>
+    </div>
+    <div>
+      <button @click="clickBtn">click!</button>
+    </div>
+    <h1 v-if="clicked" :class="{ clicked: clicked }">clicked!</h1>
+    <h1 v-if="!clicked">not clicked!</h1>
     <input type="text" v-model="newTodoItem" @keyup.enter="addTodo" />
     <button @click="addTodo">저장하기</button>
     <div v-for="item in todos" v-bind:key="item.id" class="flex">
@@ -24,6 +31,7 @@ export default defineComponent({
   setup() {
     const todos = ref([]);
     const newTodoItem = ref("");
+    const clicked = ref(false);
     const _getTodoList = async () => {
       try {
         const { data } = await getTodoList();
@@ -44,11 +52,17 @@ export default defineComponent({
       }
     };
 
+    const clickBtn = () => {
+      clicked.value = !clicked.value;
+    };
+
     _getTodoList();
     return {
       todos,
       newTodoItem,
       addTodo,
+      clickBtn,
+      clicked,
     };
   },
 });
@@ -69,5 +83,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.clicked {
+  color: red;
 }
 </style>
