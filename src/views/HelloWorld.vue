@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <router-link to="/todo">todolist</router-link>
     <h1 @click="onClick">{{ msg }}</h1>
     <div v-for="category in categoryList" v-bind:key="category.id">
       {{ category.name }}
